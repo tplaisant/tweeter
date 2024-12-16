@@ -14,7 +14,7 @@ html {
  * Global layout stuff
  */
 
- body {
+body {
   color: #545149;
   background-color: cornsilk;
   font-size: 24px;
@@ -22,6 +22,14 @@ html {
   padding-top: 120px;
 }
 
+main {  
+  width: 90%;
+  display: flex;  
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: cornsilk;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
