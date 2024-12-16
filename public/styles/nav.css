@@ -2,25 +2,22 @@ nav {
   height: 120px;
   background-color: #4056A1;
   color: #FFFFFF;
-}
-
-nav {
-  font-family: "Bungee", sans-serif;
+  display: flex;  
   width: 100%;
   padding: 0 1.5em;
   justify-content: space-between;
   align-items: center;
 }
 
-nav span {
-  display: flex;
-  /* margin-left: 1.5em;   */
+nav span { 
+  font-family: "Bungee", sans-serif;
 }
 
-.header {
+.tweet-btn-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between;
-  align-items: center; */
-  /* margin-right: 1.5em;  */
+}
+
+.fa-angles-down {
+  color: red;
 }
