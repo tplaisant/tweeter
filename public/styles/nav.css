@@ -6,15 +6,18 @@ nav {
 
 nav span {
   font-family: "Bungee", sans-serif;
-  margin-left: 1.5em;
 }
 
-nav i {
+nav span {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 1.5em;
+  margin-left: 1.5em;
+  width: 100%;
 }
 
-.fa-solid {
-  margin-left: 75em;
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1.5em; 
 }
