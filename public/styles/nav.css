@@ -1,0 +1,20 @@
+nav {
+  height: 120px;
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
+
+nav span {
+  font-family: "Bungee", sans-serif;
+  margin-left: 1.5em;
+}
+
+nav i {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.5em;
+}
+
+.fa-solid {
+  margin-left: 75em;
+}
