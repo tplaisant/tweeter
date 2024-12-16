@@ -1,6 +1,5 @@
 header {
-  padding-top: 120px;
-  height: 400px;
+  height: 500px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -11,5 +10,5 @@ header {
 }
 
 h2 {
-  margin-top: 5px;
+  margin-top: 20px;
 }
