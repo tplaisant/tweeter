@@ -4,20 +4,23 @@ nav {
   color: #FFFFFF;
 }
 
-nav span {
+nav {
   font-family: "Bungee", sans-serif;
+  width: 100%;
+  padding: 0 1.5em;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav span {
   display: flex;
-  margin-left: 1.5em;
-  width: 100%;
+  /* margin-left: 1.5em;   */
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 1.5em; 
+  /* justify-content: space-between;
+  align-items: center; */
+  /* margin-right: 1.5em;  */
 }
