@@ -29,7 +29,7 @@ main {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: cornsilk;
+  background-color: inherit;
 }
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
