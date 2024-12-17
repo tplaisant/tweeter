@@ -1,12 +1,15 @@
 $(document).ready(function() {
   $("#tweet-text").on('input', function() {
     let charCount = $(this).val().length;
-    // console.log(this);
-    $('.counter').val(140 - charCount);
+    let counter = $('.counter');
+
+    console.log(counter.text());
+
+    counter.text(140 - charCount);
     if (charCount > 140) {
-      $('.counter').css('color', 'red');
+      counter.addClass('counter-red');
     } else {
-      $('.counter').css('color', 'black');
+      counter.removeClass('counter-red');
     }
   });
 });
