@@ -6,7 +6,7 @@ $(document).ready(function() {
     console.log(counter.text());
 
     counter.text(140 - charCount);
-    if (charCount > 140) {
+    if (counter.text() < 0) {
       counter.addClass('counter-red');
     } else {
       counter.removeClass('counter-red');
