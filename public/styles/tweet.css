@@ -26,6 +26,16 @@
   color: #deba35;
 }
 
+.old-tweets {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.tweet-text {
+  margin-left: 20px;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -53,6 +63,6 @@ footer {
   font-size: 15px;
   border-top: 4px solid black;
   padding-top: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   margin-top: 30px;
 }
