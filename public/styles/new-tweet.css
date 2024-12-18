@@ -9,6 +9,8 @@
   outline: none;
   border: none;
   border-bottom: 3px solid black;
+  margin-top: 10px;
+  height: 40px;
 }
 
 .btn-tweet {
@@ -37,11 +39,6 @@
 section h2 {
   display: flex;
   justify-content: center;
-}
-
-#tweet-text {
-  margin-top: 10px;
-  height: 40px;
 }
 
 .counter-red {
