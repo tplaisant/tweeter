@@ -14,15 +14,7 @@
   box-shadow: 3px 3px 3px 2px lightgray;
 }
 
-.fa-flag:hover {
-  color: #deba35;
-}
-
-.fa-retweet:hover {
-  color: #deba35;
-}
-
-.fa-heart:hover {
+.icons i:hover {
   color: #deba35;
 }
 
@@ -34,6 +26,7 @@
 
 .tweet-text {
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 header {
@@ -46,14 +39,21 @@ header {
   padding-right: 10px;
 }
 
-.image-name {
+.user-img {
   font-family: sans-serif;
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.user {
+.user-info {
   color: grey;
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 650px;
 }
 
 footer {
