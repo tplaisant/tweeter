@@ -1,4 +1,4 @@
-.tweet-container {
+.tweets-container {
   display: flex;
   flex-direction: column;  
   border: 4px solid black;
@@ -52,6 +52,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .user-info {
@@ -60,7 +61,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 650px;
+  width: inherit;
 }
 
 footer {
