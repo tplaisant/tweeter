@@ -82,7 +82,7 @@ $(document).ready(()=> {
         success: (response) => {
           $("#tweet-text").val("");
           // $('#tweets-container').remove();
-          $('.outra').empty();
+          $('#tweets-container').empty();
           $('.counter').val(140);
           loadTweets();
         }
