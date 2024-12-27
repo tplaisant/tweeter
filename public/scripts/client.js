@@ -6,6 +6,19 @@
 
 $(document).ready(()=> {
 
+  const isTweetValid = () => {
+    const $tweetText = $("#tweet-text");    
+
+    if ($tweetText.val().length > 140) {
+      alert("TOO LONG");  
+      return false;  
+    } else if($tweetText.val() === "") {
+      alert("EMPTY TWEET");
+      return false;
+    }
+    return true;
+  }
+
   const createTweetElement = function(tweet) {
 
     const tweetCreatedAt = timeago.format(tweet.created_at);
@@ -58,15 +71,10 @@ $(document).ready(()=> {
   let $form = $("form");
 
   $form.on("submit", (event)=> {        
-    const formData = $form.serialize();
-    const $tweetText = $("#tweet-text");
-        
+    const formData = $form.serialize();        
+
     event.preventDefault();
-    if ($tweetText.val().length > 140) {
-      alert("TOO LONG");    
-    } else if($tweetText.val() === "") {
-      alert("EMPTY TWEET");
-    } else {
+    if (isTweetValid()) {
       $.ajax({
         method: 'POST',
         url: '/tweets',
