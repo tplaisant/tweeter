@@ -10,7 +10,7 @@ $(document).ready(()=> {
 
     const tweetCreatedAt = timeago.format(tweet.created_at);
 
-    return $(`<article class="tweet-text">
+    return $(`<article class="tweet-text outra">
       <header>
         <span class="user-img">      
           <img src="${tweet.user.avatars} class="old-tweets">
@@ -48,28 +48,38 @@ $(document).ready(()=> {
       success: (allTweets) => {
         renderTweets(allTweets);
       }
-    });    
+    }).fail(() => {
+      console.error('Error loading tweets');
+    });   
   }
   
   loadTweets();
 
   let $form = $("form");
 
-  $form.on("submit", (event)=> {    
-    
+  $form.on("submit", (event)=> {        
     const formData = $form.serialize();
-    
+    const $tweetText = $("#tweet-text");
+        
     event.preventDefault();
-    $.ajax({
-      method: 'POST',
-      url: '/tweets',
-      data: formData,
-      success: (response) => {
-        $("#tweet-text").val("");
-        loadTweets();
-      }
-    });
-    
+    if ($tweetText.val().length > 140) {
+      alert("TOO LONG");    
+    } else if($tweetText.val() === "") {
+      alert("EMPTY TWEET");
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: '/tweets',
+        data: formData,
+        success: (response) => {
+          $("#tweet-text").val("");
+          // $('#tweets-container').remove();
+          $('.outra').empty();
+          $('.counter').val(140);
+          loadTweets();
+        }
+      });
+    }
   })
 
 })
