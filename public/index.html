@@ -48,6 +48,14 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div id="errors">
+          <div id="too-long">
+            TOO LONG
+          </div>
+          <div id="empty">
+            EMPTY TWEET
+          </div>
+        </div>
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
           <div class="tweet">

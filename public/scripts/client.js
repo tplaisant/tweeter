@@ -9,13 +9,23 @@ $(document).ready(()=> {
   const isTweetValid = () => {
     const $tweetText = $("#tweet-text");    
 
-    if ($tweetText.val().length > 140) {
-      alert("TOO LONG");  
-      return false;  
-    } else if($tweetText.val() === "") {
-      alert("EMPTY TWEET");
+    if ($tweetText.val().length > 140) {      
+      const $errorMsg = $('#too-long');
+      $("#errors").show();
+      $("#empty").hide();  
+      $errorMsg.addClass('error-message'); 
+      $errorMsg.slideDown("slow");     
+      return false;
+
+    } else if($tweetText.val() === "") {      
+      const $errorMsg = $('#empty');
+      $("#errors").show();
+      $("#too-long").hide();
+      $errorMsg.addClass('error-message');
+      $errorMsg.slideDown("slow");        
       return false;
     }
+    $("#errors").hide();
     return true;
   }
 
@@ -29,7 +39,7 @@ $(document).ready(()=> {
       return div.innerHTML;
     };
 
-    return $(`<article class="tweet-text outra">
+    return $(`<article class="tweet-text box">
       <header>
         <span class="user-img">      
           <img src="${escape(tweet.user.avatars)} class="old-tweets">

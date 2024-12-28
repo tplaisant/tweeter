@@ -31,6 +31,21 @@
   margin-top: 6px;
 }
 
+.error-message {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 20px 30px;
+}
+
+#empty {
+  display: none;
+}
+
+#too-long {
+  display: none;
+}
+
 .tweet {
   display: flex;
   flex-direction: column;
