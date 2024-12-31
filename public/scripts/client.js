@@ -9,7 +9,7 @@ $(document).ready(()=> {
   const isTweetValid = () => {
     const $tweetText = $("#tweet-text");    
 
-    if ($tweetText.val().length > 140) {      
+    if ($tweetText.val().length > 140) {// Is the text over 140 char?    
       const $errorMsg = $('#too-long');
       $("#errors").show();
       $("#empty").hide();  
@@ -17,7 +17,7 @@ $(document).ready(()=> {
       $errorMsg.slideDown("slow");     
       return false;
 
-    } else if($tweetText.val() === "") {      
+    } else if($tweetText.val() === "") {// Is the text empty?         
       const $errorMsg = $('#empty');
       $("#errors").show();
       $("#too-long").hide();
@@ -65,12 +65,26 @@ $(document).ready(()=> {
   }
 
   const renderTweets = (arrayOfTweets) => {
+    
+    // Sort to get the newest tweet on top
+    arrayOfTweets.sort(function (a, b) {
+      if (a.created_at < b.created_at) {
+        return 1;
+      }
+      if (a.created_at > b.created_at) {
+        return -1;
+      }      
+      // a must be equal to b
+      return 0;
+    });
+    // Loop through all tweets
     for (let tweet of arrayOfTweets) {
       $('#tweets-container').append(createTweetElement(tweet));
     }    
   }
   
   const loadTweets = () => {
+    // Request all tweets from 'DB'
     const jsonFromServer = $.ajax({
       method: 'GET',
       url: '/tweets',
@@ -87,22 +101,21 @@ $(document).ready(()=> {
   let $form = $("form");
 
   $form.on("submit", (event)=> {        
-    const formData = $form.serialize();        
-    
+    const formData = $form.serialize();            
     event.preventDefault();
+    // Validate tweet and post if ok
     if (isTweetValid()) {
       $.ajax({
         method: 'POST',
         url: '/tweets',
         data: formData,
-        success: (response) => {
-          $("#tweet-text").val("");
-          $('#tweets-container').empty();
+        success: (response) => {          
+          $("#tweet-text").val("");          
           $('.counter').val(140);
+          $('#tweets-container').empty();
           loadTweets();
         }
       });
     }
   })
-
 })
