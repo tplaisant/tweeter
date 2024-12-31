@@ -6,9 +6,12 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-Post tweets to the feed and they should appear on the tweets' list directly below.
+**Post tweets to the feed and they should appear on the tweets' list directly below.**
 ![ScreenShot](/docs/feed.png)
 ![ScreenShot](/docs/new-post.png)
+
+**The screen should be responsive with the option for two sizes: Smartphone/Tablet and Desktop as such:**
+![ScreenShot](/docs/tablet-size.png)
 
 ## Getting Started
 
