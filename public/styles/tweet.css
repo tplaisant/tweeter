@@ -7,7 +7,7 @@
   margin-bottom: 50px;
 }
 
-.tweet-container:hover {
+.tweet-box:hover {
   box-shadow: 3px 3px 3px 2px lightgray;
 }
 
