@@ -6,47 +6,6 @@
 
 $(document).ready(()=> {
 
-  const Chance = require("chance"),
-  chance       = new Chance();
-
-  generateRandomUser = () => {
-    const gender    = chance.gender();
-    const firstName = chance.first({gender: gender});
-    const lastName  = chance.last();
-    const userName  = firstName + " " + lastName;
-    
-    let userHandle = "@";
-    if (Math.random() > 0.5) {
-      let prefix    = chance.prefix({gender: gender});
-      prefix = prefix.replace(".", "");
-      userHandle += prefix
-    }
-
-    userHandle += lastName;
-
-    if (Math.random() > 0.5) {
-      const suffix = Math.round(Math.random() * 100);
-      userHandle += suffix;
-    }
-   
-    const avatars = {
-    
-      Female: ["https://i.imgur.com/nlhLi3I.png","https://i.imgur.com/z5LNkkB.png","https://i.imgur.com/v0JXau2.png","https://i.imgur.com/lRUnDgU.png", "https://i.imgur.com/3GvwNBf.png"],
-      Male: ["https://i.imgur.com/73hZDYK.png","https://i.imgur.com/5fUVPRP.png","https://i.imgur.com/DVpDmdR.png","https://i.imgur.com/2WZtOD6.png", "https://i.imgur.com/ilT4JDe.png"]
-    
-    }
-    
-    const avatarArray = avatars[gender]
-    const userAvatar = avatarArray[Math.floor(Math.random()*avatarArray.length)]
-  
-
-    return {
-      name: userName,
-      handle: userHandle,
-      avatars: userAvatar
-    };
-  }
-
   const isTweetValid = () => {
     const $tweetText = $("#tweet-text");    
 
@@ -105,8 +64,7 @@ $(document).ready(()=> {
     );
   }
 
-  const renderTweets = (arrayOfTweets) => {
-    
+  const renderTweets = (arrayOfTweets, onlyLast) => {    
     // Sort to get the newest tweet on top
     arrayOfTweets.sort(function (a, b) {
       if (a.created_at < b.created_at) {
@@ -118,32 +76,36 @@ $(document).ready(()=> {
       // a must be equal to b
       return 0;
     });
+    if (onlyLast) {      
+      // Only add the last tweet to the top
+      $('#tweets-container').prepend(createTweetElement(arrayOfTweets[0]));
+    } else {
     // Loop through all tweets
-    for (let tweet of arrayOfTweets) {
-      $('#tweets-container').append(createTweetElement(tweet));
-    }    
+      for (let tweet of arrayOfTweets) {
+        $('#tweets-container').append(createTweetElement(tweet));
+      }    
+    }
   }
   
-  const loadTweets = () => {
+  const loadTweets = (onlyLast) => {
     // Request all tweets from 'DB'
     const jsonFromServer = $.ajax({
       method: 'GET',
       url: '/tweets',
       success: (allTweets) => {
-        renderTweets(allTweets);
+        renderTweets(allTweets, onlyLast);
       }
     }).fail(() => {
       console.error('Error loading tweets');
     });   
   }
   
-  loadTweets();
+  loadTweets(false);
 
   let $form = $("form");
 
   $form.on("submit", (event)=> {        
     const formData = $form.serialize();    
-    console.log(formData);
     event.preventDefault();
     // Validate tweet and post if ok
     if (isTweetValid()) {
@@ -154,54 +116,9 @@ $(document).ready(()=> {
         success: (response) => {          
           $("#tweet-text").val("");          
           $('.counter').val(140);
-
-          const user = generateRandomUser();
-          console.log(user);
-
-          $('#tweets-container').append(createTweetElement(tweet));
-
-          // $('#tweets-container').empty();
-          // loadTweets();
+          loadTweets(true);
         }
       });
     }
   })
 })
-
-// generateRandomUser: () => {
-//   const gender    = chance.gender();
-//   const firstName = chance.first({gender: gender});
-//   const lastName  = chance.last();
-//   const userName  = firstName + " " + lastName;
-  
-//   let userHandle = "@";
-//   if (Math.random() > 0.5) {
-//     let prefix    = chance.prefix({gender: gender});
-//     prefix = prefix.replace(".", "");
-//     userHandle += prefix
-//   }
-
-//   userHandle += lastName;
-
-//   if (Math.random() > 0.5) {
-//     const suffix = Math.round(Math.random() * 100);
-//     userHandle += suffix;
-//   }
- 
-//   const avatars = {
-  
-//     Female: ["https://i.imgur.com/nlhLi3I.png","https://i.imgur.com/z5LNkkB.png","https://i.imgur.com/v0JXau2.png","https://i.imgur.com/lRUnDgU.png", "https://i.imgur.com/3GvwNBf.png"],
-//     Male: ["https://i.imgur.com/73hZDYK.png","https://i.imgur.com/5fUVPRP.png","https://i.imgur.com/DVpDmdR.png","https://i.imgur.com/2WZtOD6.png", "https://i.imgur.com/ilT4JDe.png"]
-  
-//   }
-  
-//   const avatarArray = avatars[gender]
-//   const userAvatar = avatarArray[Math.floor(Math.random()*avatarArray.length)]
-
-
-//   return {
-//     name: userName,
-//     handle: userHandle,
-//     avatars: userAvatar
-//   };
-// }

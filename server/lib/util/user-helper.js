@@ -43,5 +43,5 @@ module.exports = {
       handle: userHandle,
       avatars: userAvatar
     };
-  }
+  }  
 };
